@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de gastos</title>
+    <link rel="stylesheet" href="src/style/main.css">
+    <link rel="stylesheet" href="src/style/global.css">
+</head>
+
+<body class="centralize">
+    <form>
+        <h1>Login - Controle de gastos</h1>
+        <div class="form-field">
+            <label>email</label> <br>
+            <input type="email" name="email" id="email" onchange="onChangeEmail()" placeholder="seu@email.com">
+            <div class="error" id="email-required-error">Email é obrigatório</div>
+            <div class="error" id="email-invalid-error">Email é invalido</div>
+        </div>
+        <div class="form-field">
+            <label>Senha</label> <br>
+            <input type="password" name="password" id="password" onchange="onChangePassword()" placeholder="Senha">
+            <div class="error" id="password-required-error">Senha é obrigatória</div>
+        </div>
+        <button type="button" class="clear" id="recover-password-button" onclick="recoverPassword()" disabled="true">Recuperar Senha</button> <br>
+        <button type="button" class="solid" id="login-button" disabled="true" onclick="login()">Entrar</button> <br>
+        <button type="button" class="outline" onclick="register()">Registrar</button> <br>
+    </form>
+
+    <script src="main.js"></script>
+    <script src="validations.js"></script>
+    <script src="loading.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyA738-Nmf62pn0wLzq_hH2iiVXDhEeEex8",
+            authDomain: "controle-de-gastos-19446.firebaseapp.com",
+            projectId: "controle-de-gastos-19446",
+            storageBucket: "controle-de-gastos-19446.appspot.com",
+            messagingSenderId: "1021244677624",
+            appId: "1:1021244677624:web:e9737e371302e621d24a0d"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+</body>
+
+</html>

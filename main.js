@@ -30,6 +30,9 @@ function getErrorMessage(error) {
     if (error.code == "auth/user-not-found") {
         return "Usuário não encontrado";
     }
+    if (error.code == "auth/invalid-credential") {
+        return "Senha inválida";
+    }
     return error.message;
 }
 
@@ -41,28 +44,13 @@ function register() {
 function recoverPassword() {
     showLoading();
 
-    // Verifica se há métodos de login associados ao email
-    firebase.auth().fetchSignInMethodsForEmail(form.email().value)
-        .then((signInMethods) => {
-            if (signInMethods.length === 0) {
-                hideLoading();
-                alert('Este email não está associado a uma conta.');
-                // Adicione o return para interromper a execução aqui
-                return;
-            } else {
-                return firebase.auth().sendPasswordResetEmail(form.email().value);
-            }
-        })
-        .then(() => {
-            // Sucesso no envio do email de redefinição de senha
-            hideLoading();
-            alert('Email enviado com sucesso');
-        })
-        .catch(error => {
-            // Tratamento de outros erros
-            hideLoading();
-            alert(getErrorMessage(error));
-        });
+    firebase.auth().sendPasswordResetEmail(form.email().value).then(() => {
+        hideLoading();
+        alert('Email enviado com sucesso, caso não chegue ao destinatário, verifique se informou corretamente');
+    }).catch(error => {
+        hideLoading();
+        alert(getErrorMessage(error));
+    })
 }
 
 

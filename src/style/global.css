@@ -15,6 +15,26 @@ body {
     height: 100%;
 }
 
+form {
+    background:  rgba(255, 255, 255, 0.116);
+    border-radius: 10px;
+    padding: 15px;
+    width: 300px;
+    margin: auto;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.521);
+    text-align: center;
+}
+
+.form-field {
+    margin-bottom: 10px;
+}
+
+input, button {
+    border-radius: 25px;
+    padding: 10px;
+    width: -webkit-fill-available;
+}
+
 .loading label {
     font-size: 24px;
 }

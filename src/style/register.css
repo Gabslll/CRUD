@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: rgb(62, 175, 62);
+    background-color: rgb(128, 238, 128);
     height: 100vh;
 }
 
@@ -21,3 +21,7 @@ button {
     margin-bottom: 10px;
 }
 
+body {
+    background-color: rgb(62, 175, 62);
+    height: 100vh;
+}

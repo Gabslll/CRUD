@@ -1,3 +1,18 @@
+function initializeFireBaseAndAddAuthObserver() {
+    firebase.initializeApp(firebaseConfig);
+
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            window.location.href = "../home/home.html";
+        }
+    })
+}
+
+function login() {
+    showLoading();
+    window.location.href = "../../index.html"
+}
+
 function onChangeEmail() {
     const email = form.email().value;
     form.emailRequiredError().style.display = email ? "none" : "block";
@@ -24,6 +39,7 @@ function onChangeConfirmPassword() {
 
 function register() {
     showLoading();
+    initializeFireBaseAndAddAuthObserver()
 
     const email = form.email().value;
     const password = form.password().value;

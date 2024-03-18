@@ -2,6 +2,16 @@
 // se verdadeiro, então habilitar o botão de recuperar senha 
 // se falto, então desabilitar o botão de recuperar senha
 
+function initializeFireBaseAndAddAuthObserver() {
+    firebase.initializeApp(firebaseConfig);
+
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            window.location.href = "../home/home.html";
+        }
+    })
+}
+
 function onChangeEmail() {
     toggleButtonsDisable();
     toggleEmailErrors();
@@ -14,6 +24,8 @@ function onChangePassword() {
 
 function login() {
     showLoading();
+    initializeFireBaseAndAddAuthObserver()
+
     // Retornando o obj de autenticação do FireBase
     firebase.auth().signInWithEmailAndPassword(
         form.email().value, form.password().value
